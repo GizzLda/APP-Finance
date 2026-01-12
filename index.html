@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>APP Finance</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="app__header">
+        <div>
+          <p class="app__eyebrow">Gestão financeira pessoal</p>
+          <h1>APP Finance</h1>
+          <p class="app__subtitle">
+            Registre suas receitas e despesas e acompanhe o saldo em tempo real.
+          </p>
+        </div>
+        <div class="app__balance" aria-live="polite">
+          <span>Saldo atual</span>
+          <strong id="balance">R$ 0,00</strong>
+        </div>
+      </header>
+
+      <section class="grid">
+        <form class="card" id="transaction-form">
+          <h2>Nova movimentação</h2>
+          <label>
+            Descrição
+            <input type="text" id="description" placeholder="Ex.: Salário" required />
+          </label>
+          <label>
+            Categoria
+            <input type="text" id="category" placeholder="Ex.: Trabalho" required />
+          </label>
+          <div class="row">
+            <label>
+              Tipo
+              <select id="type" required>
+                <option value="receita">Receita</option>
+                <option value="despesa">Despesa</option>
+              </select>
+            </label>
+            <label>
+              Valor (R$)
+              <input
+                type="number"
+                id="amount"
+                min="0"
+                step="0.01"
+                placeholder="0,00"
+                required
+              />
+            </label>
+          </div>
+          <button type="submit" class="primary">Adicionar</button>
+          <button type="button" class="ghost" id="clear-transactions">
+            Limpar tudo
+          </button>
+        </form>
+
+        <section class="card summary">
+          <h2>Resumo</h2>
+          <div class="summary__grid">
+            <div>
+              <span>Receitas</span>
+              <strong id="income">R$ 0,00</strong>
+            </div>
+            <div>
+              <span>Despesas</span>
+              <strong id="expenses">R$ 0,00</strong>
+            </div>
+            <div>
+              <span>Saldo</span>
+              <strong id="net">R$ 0,00</strong>
+            </div>
+          </div>
+          <p class="summary__hint">
+            Dica: cadastre todas as entradas e saídas para ter uma visão completa.
+          </p>
+        </section>
+      </section>
+
+      <section class="card transactions">
+        <div class="transactions__header">
+          <h2>Últimas movimentações</h2>
+          <span id="transaction-count">0 registros</span>
+        </div>
+        <ul id="transaction-list" class="transactions__list"></ul>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
